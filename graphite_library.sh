@@ -41,14 +41,14 @@ function media_list() {
         gsub(/.*] /, "", $2); gsub(/\./,"_", h);
         if ($5 ~ /Permanent/) {ttl="-1"};
         if ($5 ~ /None/) {ttl="0"};
-        print "hpdp."h".pool." p ".media." $2 ".status", $4, systime();
+        print "hpdp."h".pool." p ".media_list." $2 ".status", $4, systime();
         if ($5 !~ /Permanent|None/) {
-          system("date -d \"" $5 "\" +hpdp." h ".pool." p ".media." $2 ".protection\\ %s\\ " systime());
+          system("date -d \"" $5 "\" +hpdp." h ".pool." p ".media_list." $2 ".protection\\ %s\\ " systime());
         } else {
-          print "hpdp."h".pool." p ".media." $2 ".protection", ttl, systime(); };
-        print "hpdp."h".pool." p ".media." $2 ".used_mb", $6, systime();
-        print "hpdp."h".pool." p ".media." $2 ".total_mb", $7, systime();
-        print "hpdp."h".pool." p ".media." $2 ".last_used", $9, systime();
+          print "hpdp."h".pool." p ".media_list." $2 ".protection", ttl, systime(); };
+        print "hpdp."h".pool." p ".media_list." $2 ".used_mb", $6, systime();
+        print "hpdp."h".pool." p ".media_list." $2 ".total_mb", $7, systime();
+        print "hpdp."h".pool." p ".media_list." $2 ".last_used", $9, systime();
       }'
   done
 }
